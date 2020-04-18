@@ -96,14 +96,14 @@
             </div>
 
             <div class="ng-chat-footer primary-outline-color primary-background">
-                <input #chatWindowInput 
-                    type="text" 
-                    [ngModel]="window.newMessage | emojify:emojisEnabled" 
-                    (ngModelChange)="window.newMessage=$event" 
-                    [placeholder]="localization.messagePlaceholder" 
-                    [ngClass]="{'chat-window-input': true, 'has-side-action': fileUploadAdapter}"
-                    (keydown)="onChatInputTyped($event, window)" 
-                    (blur)="toggleWindowFocus(window)" 
+                <input #chatWindowInput
+                    type="text"
+                    [ngModel]="window.newMessage | emojify:emojisEnabled"
+                    (ngModelChange)="window.newMessage=$event"
+                    [placeholder]="localization.messagePlaceholder"
+                    [ngClass]="{'chat-window-input': true, 'has-side-action': fileUploadAdapter || showSendButton}"
+                    (keydown)="onChatInputTyped($event, window)"
+                    (blur)="toggleWindowFocus(window)"
                     (focus)="toggleWindowFocus(window)"/>
 
                 <!-- File Upload -->
@@ -118,6 +118,16 @@
                         [attr.id]="getUniqueFileUploadInstanceId(window)" 
                         (change)="onFileChosen(window)" />
                     <div *ngIf="isUploadingFile(window)" class="loader"></div>
+                </ng-container>
+
+                <ng-container *ngIf="showSendButton">
+                    <a
+                        #sendMessageButton
+                        class="btn-send-message"
+                        (click)="onSendMessagePressed($event, window)"
+                    >
+                      <div class="arrow-right icon"></div>
+                    </a>
                 </ng-container>
             </div>
         </ng-container>

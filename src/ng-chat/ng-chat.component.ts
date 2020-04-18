@@ -155,6 +155,9 @@ export class NgChat implements OnInit, IChatController {
     public showMessageDate: boolean = true;
     
     @Input()
+    public showSendButton: boolean = true;
+
+    @Input()
     public isViewportOnMobileEnabled: boolean = false;
      
     @Output()
@@ -815,6 +818,27 @@ export class NgChat implements OnInit, IChatController {
                 {
                     this.onCloseChatWindow(window);
                 }
+        }
+    }
+
+    onSendMessagePressed(event: any, window: Window): void
+    {
+        if (window.newMessage && window.newMessage.trim() != "")
+        {
+            let message = new Message();
+
+            message.fromId = this.userId;
+            message.toId = window.participant.id;
+            message.message = window.newMessage;
+            message.dateSent = new Date();
+
+            window.messages.push(message);
+
+            this.adapter.sendMessage(message);
+
+            window.newMessage = ""; // Resets the new message input
+
+            this.scrollChatWindow(window, ScrollDirection.Bottom);
         }
     }
 

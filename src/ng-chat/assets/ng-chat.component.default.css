@@ -252,7 +252,15 @@
             {
                 width: calc(100% - 30px);
             }
-        .ng-chat-window .ng-chat-footer .btn-add-file
+        .ng-chat-window .ng-chat-footer .btn-add-file {
+            position: absolute;
+            right: 35px;
+            bottom: 7px;
+            height: 20px;
+            width: 20px;
+            cursor: pointer;
+        }
+        .ng-chat-window .ng-chat-footer .btn-send-message
         {
             position: absolute;
             right: 5px;
@@ -260,13 +268,14 @@
             height: 20px;
             width: 20px;
             cursor: pointer;
+            padding: 0 5px;
         }
         .ng-chat-window .ng-chat-footer .loader
         {
             position: absolute;
             right: 14px;
             bottom: 8px;
-        }    
+        }
     .ng-chat-window .ng-chat-load-history
     {
         height: 30px;
@@ -419,7 +428,7 @@
 }
 
 /* Mobile viewport only */
-@media only screen and (max-width: 581px) { 
+@media only screen and (max-width: 581px) {
     #ng-chat-people
     {
         width: 300px;

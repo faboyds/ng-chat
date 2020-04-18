@@ -95,6 +95,7 @@ __Additional Settings__
 * [theme]{ng-chat/core/theme.enum:Theme}: Defines the styling theme. There is a light (default) and a dark theme available. You can also supply this as a string.
 * [customTheme]{string}: Source URL of the stylesheet asset to use for custom CSS styles. Works with assets relative to the project using ng-chat.
 * [showMessageDate]{boolean}: Shows the date in which a message was sent. Default is true.
+* [showSendButton]{boolean}: Shows a button that send the typed message when pressed. Default is false.
 * [messageDatePipeFormat]{string}: The format for the pipe that is used when rendering the date in which a message was sent. Default is "short".
 * [groupAdapter]{IChatGroupAdapter}: A group adapter implementation to enable group chat.
 * [isViewportOnMobileEnabled]{boolean}: Allow ng-chat to render and be displayed on mobile devices. Default is false.
